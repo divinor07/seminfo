@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <img src="{{palestra.img}}"/>
+
+    <ion-card-content>
+      <ion-card-title >
+        {{palestra.autor}}
+      </ion-card-title>
+      <p>
+        {{palestra.descricao}}
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='heart' item-start style="color:red"></ion-icon>
+      Followers
+      <ion-badge item-end>{{palestra.likes}}</ion-badge>
+    </ion-item>
+
+  </ion-card>
+</ion-content>
