@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-home',
@@ -9,24 +11,21 @@ export class HomePage {
 
   palestras;
 
-  constructor(public navCtrl: NavController) {
-    this.palestras = [
-      {
-        'img': 'assets/imgs/logo.png',
-        'autor': 'Professor X',
-        'descricao': '...',
-        'likes': '7'
-      },
-      {
-        'img': '',
-        'autor': '',
-        'descricao': '',
-        'likes': ''
-      }]
-
+  constructor(public navCtrl: NavController, public http: Http) {
+    this.get().then((data) => {
+      this.palestras = data;
+    })
   }
 
-  up_like(palestra){
+  get() {
+    return new Promise((resolve, reject) => {
+      this.http.get("https://seminfo.herokuapp.com/api/events").map(res => res.json()).subscribe(data => {
+        resolve(data.events);
+      });
+    });
+  }
+
+  up_like(palestra) {
     palestra.likes++;
   }
 
