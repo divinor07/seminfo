@@ -7,24 +7,28 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-slides pager>
+    <ion-slide *ngFor="let palestra of palestras">
 
-    <img src="{{palestra.img}}"/>
+      <ion-card>
+        <img src="{{palestra.img}}" />
 
-    <ion-card-content>
-      <ion-card-title >
-        {{palestra.autor}}
-      </ion-card-title>
-      <p>
-        {{palestra.descricao}}
-      </p>
-    </ion-card-content>
+        <ion-card-content>
+          <ion-card-title>
+            {{palestra.autor}}
+          </ion-card-title>
+          <p>
+            {{palestra.descricao}}
+          </p>
+        </ion-card-content>
 
-    <ion-item>
-      <ion-icon name='heart' item-start style="color:red"></ion-icon>
-      Followers
-      <ion-badge item-end>{{palestra.likes}}</ion-badge>
-    </ion-item>
+        <ion-item>
+          <ion-icon name='heart' item-start style="color:red"></ion-icon>
+          <ion-badge item-end>{{palestra.likes}}</ion-badge>
+        </ion-item>
+      </ion-card>
 
-  </ion-card>
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

@@ -7,15 +7,22 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  palestra;
+  palestras;
 
   constructor(public navCtrl: NavController) {
-    this.palestra = {
-      'img': '',
-      'autor': '',
-      'descricao': '',
-      'likes': ''
-    }
+    this.palestras = [
+      {
+        'img': 'assets/imgs/logo.png',
+        'autor': 'Professor X',
+        'descricao': '...',
+        'likes': '7'
+      },
+      {
+        'img': '',
+        'autor': '',
+        'descricao': '',
+        'likes': ''
+      }]
 
   }
 
