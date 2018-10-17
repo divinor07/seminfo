@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -11,10 +11,19 @@ export class HomePage {
 
   palestras;
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, public http: Http, private loadingCtrl: LoadingController) {
+    let loading = this.loadingCtrl.create({
+      content: 'Espere...',
+      spinner: 'crescent'
+    });
+
+    loading.present();
+
     this.get().then((data) => {
       this.palestras = data;
-    })
+      loading.dismiss();
+    });
+
   }
 
   get() {
