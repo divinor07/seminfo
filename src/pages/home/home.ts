@@ -26,4 +26,8 @@ export class HomePage {
 
   }
 
+  up_like(palestra){
+    palestra.likes++;
+  }
+
 }

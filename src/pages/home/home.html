@@ -23,7 +23,7 @@
         </ion-card-content>
 
         <ion-item>
-          <ion-icon name='heart' item-start style="color:red"></ion-icon>
+          <ion-icon name='heart' item-start style="color:red" (click)='up_like(palestra)'></ion-icon>
           <ion-badge item-end>{{palestra.likes}}</ion-badge>
         </ion-item>
       </ion-card>
