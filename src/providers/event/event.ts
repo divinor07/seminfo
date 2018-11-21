@@ -10,13 +10,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class EventProvider {
 
+  URL = "https://seminfo.herokuapp.com/api/events"
+
   constructor(public http: Http) {
     
   }
 
   list() {
     return new Promise((resolve, reject) => {
-      this.http.get("https://seminfo.herokuapp.com/api/events").map(res => res.json()).subscribe(data => {
+      this.http.get(this.URL).map(res => res.json()).subscribe(data => {
         resolve(data.events);
       }, error => {
         console.log("Oooops!");
@@ -26,7 +28,7 @@ export class EventProvider {
 
   like(event){
     return new Promise(resolve => {
-      this.http.post('https://seminfo.herokuapp.com/api/events/' + event.id + '/like', {}).subscribe(data => {
+      this.http.post(this.URL + "/" + event.id + '/like', {}).subscribe(data => {
         resolve(data);
       }, error => {
         console.log("Oooops!");
