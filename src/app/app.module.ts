@@ -7,11 +7,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
+import { EventsPage } from '../pages/events/events';
+import { SelfiesPage } from '../pages/selfies/selfies';
+import { NovaSelfiePage } from '../pages/nova-selfie/nova-selfie';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EventsPage,
+    SelfiesPage,
+    NovaSelfiePage
   ],
   imports: [
     BrowserModule,
@@ -21,11 +28,15 @@ import { HttpModule } from '@angular/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EventsPage,
+    SelfiesPage,
+    NovaSelfiePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

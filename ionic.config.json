@@ -1,5 +1,7 @@
 {
   "name": "seminfo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

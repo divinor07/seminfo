@@ -1,0 +1,40 @@
+<!--
+  Generated template for the NovaSelfiePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nova Selfie</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+
+        <ion-card-content>
+          <ion-item>
+            <button ion-button color='dark' block (click)='tirar_foto()'>Selfie</button>
+          </ion-item>
+    
+          <ion-item>
+            <ion-img width='100px' height='100px'  [src]='selfie.img'></ion-img>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label stacked>Depoimento</ion-label>
+            <ion-input type="text" [(ngModel)]='selfie.depoimento'></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <button ion-button color='dark' block (click)='add()'>Ok</button>
+          </ion-item>
+        </ion-card-content>
+    
+      </ion-card>
+
+</ion-content>
