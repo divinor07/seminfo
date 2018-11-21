@@ -11,6 +11,7 @@ import { EventsPage } from '../pages/events/events';
 import { SelfiesPage } from '../pages/selfies/selfies';
 import { NovaSelfiePage } from '../pages/nova-selfie/nova-selfie';
 import { Camera } from '@ionic-native/camera';
+import { EventProvider } from '../providers/event/event';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { Camera } from '@ionic-native/camera';
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EventProvider
   ]
 })
 export class AppModule {}
