@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { NovaSelfiePage } from '../nova-selfie/nova-selfie';
+import { SelfieProvider } from '../../providers/selfie/selfie';
 
 /**
  * Generated class for the SelfiesPage page.
@@ -20,7 +21,7 @@ export class SelfiesPage {
   selfies;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private loadingCtrl: LoadingController, 
-    private modalCtrl: ModalController, private toastCtrl: ToastController) {
+    private modalCtrl: ModalController, public selfieProvider: SelfieProvider) {
     let loading = this.loadingCtrl.create({
       content: 'Espere...',
       spinner: 'crescent'
@@ -28,18 +29,12 @@ export class SelfiesPage {
 
     loading.present();
 
-    this.get().then((data) => {
+    this.selfieProvider.list().then((data) => {
       this.selfies = data;
       loading.dismiss();
-    });
-  }
-
-  get() {
-    return new Promise((resolve, reject) => {
-      this.http.get("https://seminfo.herokuapp.com/api/selfies").map(res => res.json()).subscribe(data => {
-        console.log(Object.keys(data.selfies).map(key => data.selfies[key]));
-        resolve(Object.keys(data.selfies).map(key => data.selfies[key]));
-      });
+    }).catch((error) => {
+      loading.dismiss();
+      console.log("Error");
     });
   }
 
@@ -50,15 +45,14 @@ export class SelfiesPage {
     });
 
     loading.present();
-    return new Promise(resolve => {
-      this.http.post('https://seminfo.herokuapp.com/api/selfies/' + selfie.id + '/like', {}).subscribe(data => {
-        resolve(data);
-        selfie.likes++;
-        loading.dismiss();
-      }, error => {
-        console.log("Oooops!");
-      });
+    this.selfieProvider.like(selfie).then((data) => {
+      selfie.likes++;
+      loading.dismiss();
+    }).catch((error) => {
+      loading.dismiss();
+      console.log("Error");
     });
+
   }
 
   nova_selfie_modal() {

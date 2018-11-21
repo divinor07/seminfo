@@ -49,7 +49,7 @@ export class EventsPage {
     }).catch((error) => {
       loading.dismiss();
       console.log("Error");
-    })
+    });
   }
 
   ionViewDidLoad() {
